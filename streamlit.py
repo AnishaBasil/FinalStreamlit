@@ -181,8 +181,27 @@ st.subheader('Pivot DRG for SBU Hospital')
 dataframe_pivot = df_merged_clean_SB2.pivot_table(index=['provider_name','drg_definition'],values=['average_total_payments'],aggfunc='mean')
 st.dataframe(dataframe_pivot)
 
+##APC
+st.markdown('Merging of Datasets to show SBU Hospital values')
+df_hospital_1['provider_id'] = df_hospital_1['provider_id'].astype(str)
+df_outpatient_1['provider_id'] = df_outpatient_1['provider_id'].astype(str)
+df_merged = df_outpatient_1.merge(df_hospital_1, how='left', left_on='provider_id', right_on='provider_id')
+
+st.dataframe(df_merged)
+st.markdown('Cleaning of df_merge')
+df_merged_clean = df_merged[df_merged['hospital_name'].notna()]
+st.dataframe(df_merged_clean)
+st.header('Stony Brook University Hospital dataset')
+df_merged_clean_SB = df_merged_clean[df_merged_clean['hospital_name'] == 'SUNY/STONY BROOK UNIVERSITY HOSPITAL']
+df_merged_clean_SB
 
 
+st.subheader('Pivot APC for SBU Hospital')
+dataframe_pivot = df_merged_clean_SB.pivot_table(index=['provider_id','apc'],values=['average_total_payments'],aggfunc='mean')
+st.dataframe(dataframe_pivot)
+st.markdown('SBU Hospital Q: What are the most expensive apc for SBU Hopsital?')
+st.markdown('SBU Answer:The most expensive average total cost for APC in the outpatient and hospital dataframe with SBU hospital are: ')
+st.markdown('1. Level IV endoscopy 2307.21, 2. Level IV Nerver Injections 1325.64, 3. Level II Cardiac Imaging 1300.67')
 
 
 
