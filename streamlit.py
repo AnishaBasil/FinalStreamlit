@@ -239,3 +239,20 @@ fig3 = px.bar(bar2, x='index', y='hospital_name')
 st.plotly_chart(fig3)
 st.dataframe(bar2)
 
+st.markdown('5. What is the difference between the total payment of Stony Brook Hospital compared to st. charles hospital?')
+st.markdown('- As shown by the analysis, we can see Stony Brook Hospital has a significantly higher cost of average total payments with Endoscopy upper airway ranking the highest compared to St Charles hospital')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
