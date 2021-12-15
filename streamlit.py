@@ -183,8 +183,12 @@ st.dataframe(dataframe_pivot)
 
 
 ## APC
+df_merged = outpatientdf.merge(hospitaldf, how='left', left_on='provider_id', right_on='provider_id')
 
-
+st.dataframe(df_merged)
+st.markdown('Cleaning of df_merge')
+df_merged_clean = df_merged[df_merged['hospital_name'].notna()]
+st.dataframe(df_merged_clean)
 
 st.subheader('Pivot APC for SBU Hospital')
 dataframe_pivot = df_merged_clean_SB2.pivot_table(index=['provider_id','apc'],values=['average_total_payments'],aggfunc='mean')
