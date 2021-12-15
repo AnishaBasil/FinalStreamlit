@@ -140,6 +140,10 @@ st.markdown('- As shown by the analysis above, Florida has the most inpatient fa
 
 
 ##Common D/C 
+st.markdown('3. What is Stony Brooks top three and bottom three inpatient DRG service?')
+st.markdown('- As shown by the analysis above, the top 3 are heart transplant, ecmo, and t rach\
+            while the bottom 3 are trauma related, hiv related conditions') 
+
 
 common_discharges = df_inpatient_1.groupby('drg_definition')['total_discharges'].sum().reset_index()
 
