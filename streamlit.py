@@ -182,15 +182,6 @@ dataframe_pivot = df_merged_clean_SB2.pivot_table(index=['provider_name','drg_de
 st.dataframe(dataframe_pivot)
 
 
-## APC
-df_merged = outpatientdf.merge(hospitaldf, how='left', left_on='provider_id', right_on='provider_id')
-
-
-
-
-
-
-
 
 
 
