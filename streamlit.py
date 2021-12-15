@@ -84,6 +84,9 @@ st.header('Hospital/Inpatient Merged Data')
 df_merge_inpt = df_inpatient.merge(df_hospital, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
 st.dataframe(df_merge_outpt)
 
+st.header('DRGs')
+st.dataframe(common_discharges)
+
 
 
 
