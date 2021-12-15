@@ -75,14 +75,6 @@ st.dataframe(outpatient2015)
 st.header('Inpatient Data Preview')
 st.dataframe(inpatient2015)
 
-# Merging Datasets 
-st.header('Hospital/Outpatient Merged Data')
-df_merge_outpt = df_outpatient.merge(df_hospital, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
-st.dataframe(df_merge_outpt)
-
-st.header('Hospital/Inpatient Merged Data')
-df_merge_inpt = df_inpatient.merge(df_hospital, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
-st.dataframe(df_merge_outpt)
 
 st.subheader('Hospital Type Breakdown')
 bar1 = df_Hospital['hospital_type'].value_counts().reset_index()
@@ -92,6 +84,7 @@ st.markdown('The above chart shows the breakdown of hospital types')
 st.subheader('Pie Chart of Hospital Type')
 fig = px.pie(bar1, values='hospital_type', names='index')
 st.plotly_chart(fig)
+
 
 
 
