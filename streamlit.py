@@ -204,7 +204,7 @@ st.markdown('The most expensive average total cost for APC in the outpatient and
              Level IV Nerver Injections 1325.64 and the third is Level II Cardiac Imaging 1300.67')
 
 
-## ok
+## Comparison
 
 st.header('Merging datasets for SBU and St. Charles Hospital')
 st.markdown('Merging of Datasets to show SBU Hospital values')
@@ -222,11 +222,11 @@ df_merged_clean_SB = df_merged_clean[df_merged_clean['hospital_name'] == 'SUNY/S
 df_merged_clean_SB
 
 st.header('St Charles')
-df_merged_clean_CEMC = df_merged_clean[df_merged_clean['hospital_name'] == 'CAROLINA EAST MEDICAL CENTER']
-df_merged_clean_CEMC
+df_merged_clean_STC = df_merged_clean[df_merged_clean['hospital_name'] == 'ST CHARLES HOSPITAL']
+df_merged_clean_STC
 
 st.header('Comparison of St Charles and SBU Hospitals')
-final_df_comparison = pd.concat([df_merged_clean_CEMC, df_merged_clean_SB])
+final_df_comparison = pd.concat([df_merged_clean_STC, df_merged_clean_SB])
 st.dataframe(final_df_comparison)
 
 st.subheader('Final Comparison Pivot Table')
