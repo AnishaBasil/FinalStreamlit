@@ -78,8 +78,12 @@ st.dataframe(df_inpatient_1)
 st.subheader('Hospital Type in New York')
 bar1 = df_hospital_1['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
-st.caption('Acute care hospitals followed by psychiatric')
+st.caption('Acute care hospitals is the most common hospital type in New York ')
 
+st.subheader('Visual Representation:')
+fig = px.pie(bar1, values='hospital_type', names='index')
+st.plotly_chart(fig)
+st.caption('Different hospital types in the New York Area above, 75.4% are acute care hospitals')
 
 
 
