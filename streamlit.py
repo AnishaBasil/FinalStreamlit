@@ -204,5 +204,12 @@ st.markdown('The most expensive average total cost for APC in the outpatient and
              Level IV Nerver Injections 1325.64 and the third is Level II Cardiac Imaging 1300.67')
 
 
+#Costs 
+inpatient_ny = df_inpatient_1[df_inpatient_1['provider_state'] == 'NY']
+total_inpatient_count = sum(inpatient_ny['total_discharges'])
 
+
+costs_condition_hospital = inpatient_ny.groupby(['provider_name', 'drg_definition'])['average_total_payments'].sum().reset_index()
+st.header("Costs by Condition and Hospital - Average Total Payments")
+st.dataframe(costs_condition_hospital)
 
