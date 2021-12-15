@@ -31,4 +31,5 @@ print ('outpatient_info:' , len(outpatientdf))
 
 print ('inpatient_info:' , len(inpatientdf))
 
-st.title('AHI STREAMLIT APP DEPLOYMENT')
+st.title('STREAMLIT APP DEPLOYMENT')
+st.write('Welcome, *Everyone!* :sunglasses:')
