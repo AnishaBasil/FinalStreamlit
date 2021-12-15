@@ -113,7 +113,7 @@ st.markdown('- As shown by the analysis above, the most common hospital type in 
             In terms of ranking, most of the New York Hospitals are below national average in regards to timeliness of care')  
 
 ##INPATIENT and OUTPATIENT 
-st.title('INPATIENT dataframe')
+st.title('Inpatient and outpatient dataframes')
 st.markdown('The dataframe displayed below is for the Inpatient facility')
 
 st.subheader('Inpatient Facility')
@@ -125,6 +125,15 @@ fig7 = px.bar(bar7, x='index', y='provider_state')
 st.plotly_chart(fig7)
 
 
+st.markdown('The dataframe displayed below is for the outpatient facility')
+
+st.subheader('Outpatient Facility')
+bar7 = df_outpatient_1['provider_state'].value_counts().reset_index()
+st.dataframe(bar7)
+
+st.subheader('Bar Chart of outpatient Facilities by state')
+fig7 = px.bar(bar7, x='index', y='provider_state')
+st.plotly_chart(fig7)
 
 
 
