@@ -108,8 +108,8 @@ st.caption('Based on the bar chart above, we can see the the timeliness\
 
 
 
-st.markdown('What are the most common hospital types and where does New York rank in regards to timeliness of care?')
-st.markdown('As shown by the analysis above, the most common hospital type in NY is acute care (144 acute care hospitals).\
+st.markdown('1. What are the most common hospital types and where does New York rank in regards to timeliness of care?')
+st.markdown('- As shown by the analysis above, the most common hospital type in NY is acute care (144 acute care hospitals).\
             In terms of ranking, most of the New York Hospitals are below national average in regards to timeliness of care')  
 
 
