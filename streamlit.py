@@ -76,15 +76,12 @@ st.header('Inpatient Data Preview')
 st.dataframe(inpatient2015)
 
 
-st.subheader('Hospital Type Breakdown')
-bar1 = df_Hospital['hospital_type'].value_counts().reset_index()
+#Bar Chart
+st.subheader('Hospital Type in New York')
+bar1 = hospitals_ny['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
-st.markdown('The above chart shows the breakdown of hospital types') 
 
-st.subheader('Pie Chart of Hospital Type')
-fig = px.pie(bar1, values='hospital_type', names='index')
-st.plotly_chart(fig)
-
+st.caption('Most of the hospitals in the New York area are acute care, followed by psychiatric')
 
 
 
