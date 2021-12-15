@@ -204,12 +204,22 @@ st.markdown('The most expensive average total cost for APC in the outpatient and
              Level IV Nerver Injections 1325.64 and the third is Level II Cardiac Imaging 1300.67')
 
 
-#Costs 
+## ok
+
+st.subheader('Stonybrook inpatient Mortality National Comparison Pivot Table')
+
+df_merge_outpt = inpatientdf.merge(hospitaldf, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
+st.dataframe(df_merge_outpt)
+
+sb_merge_output = df_merge_outpt[df_merge_outpt['provider_id'] == '330239']
+st.dataframe(sb_merge_output)
+
+st.subheader('Non-StonyBrook Inpatient DRGs Pivot Table')
 
 
-costs_condition_hospital = inpatient_ny.groupby(['provider_name', 'drg_definition'])['average_total_payments'].sum().reset_index()
-st.header("Costs by Condition and Hospital - Average Total Payments")
-st.dataframe(costs_condition_hospital)
-
+SB_Outpatient_pivot = sb_merge_output.pivot_table(index=['provider_id','mortality_national_comparison'],values=['outpatient_services'])
+st.dataframe(SB_Outpatient_pivot)
+df_SB_Outpatient_ = sb_merge_output['mortality_national_comparison','outpatient_services'].value_counts().reset_index()
+st.bar_chart(SB_Outpatient_pivot)
 
 
