@@ -76,11 +76,9 @@ st.dataframe(df_inpatient_1)
 
 #Bar Chart
 st.subheader('Hospital Type in New York')
-bar1 = hospitals_info['hospital_type'].value_counts().reset_index()
+bar1 = df_hospital_1['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
-
-st.caption('Most of the hospitals in the New York area are acute care, followed by psychiatric')
-
+st.caption('Acute care hospitals followed by psychiatric')
 
 
 
