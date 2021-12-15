@@ -135,6 +135,11 @@ st.subheader('Bar Chart of outpatient Facilities by state')
 fig7 = px.bar(bar7, x='index', y='provider_state')
 st.plotly_chart(fig7)
 
+st.markdown('2.  Which states have the greatest number of inpatient and outpatient facilities?')
+st.markdown('- As shown by the analysis above, Florida has the most inpatient facilities and Texas has the most outpatient facilities.) 
+    
+
+           
 
 
 
