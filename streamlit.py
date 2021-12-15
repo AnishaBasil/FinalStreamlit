@@ -232,3 +232,5 @@ costs_condition_hospital = inpatient_ny.groupby(['provider_name', 'drg_definitio
 st.header("Costs by Condition and Hospital - Average Total Payments")
 st.dataframe(costs_condition_hospital)
 
+
+
