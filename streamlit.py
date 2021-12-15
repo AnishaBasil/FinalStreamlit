@@ -199,9 +199,9 @@ df_merged_clean_SB
 st.subheader('Pivot APC for SBU Hospital')
 dataframe_pivot = df_merged_clean_SB.pivot_table(index=['provider_id','apc'],values=['average_total_payments'],aggfunc='mean')
 st.dataframe(dataframe_pivot)
-st.markdown('SBU Hospital Q: What are the most expensive apc for SBU Hopsital?')
-st.markdown('SBU Answer:The most expensive average total cost for APC in the outpatient and hospital dataframe with SBU hospital are: ')
-st.markdown('1. Level IV endoscopy 2307.21, 2. Level IV Nerver Injections 1325.64, 3. Level II Cardiac Imaging 1300.67')
+st.markdown('4. What are the top 3 expensive APC for SBU Hopsital?')
+st.markdown('The most expensive average total cost for APC in the outpatient and hospital dataframe with SBU hospital are: ')
+st.markdown('First one is the Level IV endoscopy 2307.21, Second one is the Level IV Nerver Injections 1325.64 and the third is Level II Cardiac Imaging 1300.67')
 
 
 
