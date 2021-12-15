@@ -83,11 +83,30 @@ st.caption('Acute care hospitals is the most common hospital type in New York ')
 st.subheader('Visual Representation of hospital types:')
 fig = px.pie(bar1, values='hospital_type', names='index')
 st.plotly_chart(fig)
-st.caption('Different hospital types in the New York Area above, 75.4% are acute care hospitals')
+st.caption('Different hospital types in the New York Area above, with acute care hospitals taking a huge chunk')
 
-st.subheader('Pie Chart of Hospital Type')
-fig = px.pie(bar1, values='hospital_type', names='index')
-st.plotly_chart(fig)
+#Timeliness of Care
+ny_hospitals = df_hospital_1[df_hospital_1['state'] == 'NY']
+
+nc_hospitals = df_hospital_1[df_hospital_1['state'] == 'NC']
+
+
+st.subheader('NY Hospitals - Timeliness of Care')
+bar2 = ny_hospitals['timeliness_of_care_national_comparison'].value_counts().reset_index()
+fig2 = px.bar(bar2, x='index', y='timeliness_of_care_national_comparison')
+st.plotly_chart(fig2)
+st.caption('Majority of hospitals in the NY area fall below the national\
+        average as it relates to timeliness of care')
+
+st.subheader('TX Hospitals - Timeliness of Care')
+bar4 = nc_hospitals['timeliness_of_care_national_comparison'].value_counts().reset_index()
+fig5 = px.bar(bar4, x='index', y='timeliness_of_care_national_comparison')
+st.plotly_chart(fig5)
+st.caption('Based on the bar chart above, we can see the the timeliness\
+           of care data for the majority of hospitals in the North Carolina area is not available and for 127 hospitals is the same as the national average')
+
+
+
 
 
 
