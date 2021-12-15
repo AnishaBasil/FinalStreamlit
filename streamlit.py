@@ -136,7 +136,31 @@ fig7 = px.bar(bar7, x='index', y='provider_state')
 st.plotly_chart(fig7)
 
 st.markdown('2.  Which states have the greatest number of inpatient and outpatient facilities?')
-st.markdown('- As shown by the analysis above, Florida has the most inpatient facilities and Texas has the most outpatient facilities.) 
+st.markdown('- As shown by the analysis above, Florida has the most inpatient facilities and Texas has the most outpatient facilities') 
+
+
+##Common D/C 
+
+common_discharges = df_inpatient_1.groupby('drg_definition')['total_discharges'].sum().reset_index()
+
+
+top10 = common_discharges.head(10)
+bottom10 = common_discharges.tail(10)
+
+
+
+st.subheader('DRGs')
+st.dataframe(common_discharges)
+
+
+col1, col2 = st.columns(2)
+
+col1.subheader('Top 10 DRGs')
+col1.dataframe(top10)
+
+col2.subheader('Bottom 10 DRGs')
+col2.dataframe(bottom10)
+
     
 
            
