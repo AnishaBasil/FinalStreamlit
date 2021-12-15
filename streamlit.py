@@ -254,7 +254,7 @@ st.plotly_chart(fig2)
 st.caption('Majority of hospitals in the NY area fall below the national\
         average as it relates to mortality national comparison')
 
-st.subheader('FL Hospitals - Mortality Rate')
+st.subheader('NC Hospitals - Mortality Rate')
 bar4 = nc_hospitals['mortality_national_comparison'].value_counts().reset_index()
 fig5 = px.bar(bar4, x='index', y='mortality_national_comparison')
 st.plotly_chart(fig5)
