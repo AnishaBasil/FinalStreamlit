@@ -36,18 +36,18 @@ st.write('Welcome, *Everyone!* :sunglasses:')
 
 @st.cache
 def load_hospitals():
-    df_hospital_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_hospital_2.csv')
-    return df_hospital_2
-
-@st.cache
-def load_inatpatient():
-    df_inpatient_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_inpatient_2.csv')
-    return df_inpatient_2
+    hospital_info = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_hospital_2.csv')
+    return hospital_info
 
 @st.cache
 def load_outpatient():
-    df_outpatient_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_outpatient_2.csv')
-    return df_outpatient_2
+    outpatient2015 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_outpatient_2.csv')
+    return outpatient2015
+
+@st.cache
+def load_inpatient():
+    inpatient2015 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_inpatient_2.csv')
+    return inpatient2015
 
 
     
