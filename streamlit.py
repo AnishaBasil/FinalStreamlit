@@ -84,46 +84,14 @@ st.header('Hospital/Inpatient Merged Data')
 df_merge_inpt = df_inpatient.merge(df_hospital, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
 st.dataframe(df_merge_outpt)
 
-st.header('DRGs')
-st.dataframe(common_discharges)
+st.subheader('Hospital Type Breakdown')
+bar1 = df_Hospital['hospital_type'].value_counts().reset_index()
+st.dataframe(bar1)
+st.markdown('The above chart shows the breakdown of hospital types') 
 
-col1, col2 = st.beta_columns(2)
-
-col1.header('Top 10 DRGs')
-col1.dataframe(top10)
-
-col2.header('Bottom 10 DRGs')
-col2.dataframe(bottom10)
-
-#Bar Charts of the costs 
-
-costs = inpatient_ny.groupby('provider_name')['avsterage_total_payments'].sum().reset_index()
-costs['average_total_payments'] = costs['average_total_payments'].astype('int64')
-
-
-costs_medicare = inpatient_ny.groupby('provider_name')['average_medicare_payments'].sum().reset_index()
-costs_medicare['average_medicare_payments'] = costs_medicare['average_medicare_payments'].astype('int64')
-
-
-costs_sum = costs.merge(costs_medicare, how='left', left_on='provider_name', right_on='provider_name')
-costs_sum['delta'] = costs_sum['average_total_payments'] - costs_sum['average_medicare_payments']
-
-
-st.title('COSTS')
-
-bar3 = px.bar(costs_sum, x='provider_name', y='average_total_payments')
-st.plotly_chart(bar3)
-st.header("Hospital - ")
-st.dataframe(costs_sum)
-
-
-#Costs by Condition and Hospital / Average Total Payments
-costs_condition_hospital = inpatient_ny.groupby(['provider_name', 'drg_definition'])['average_total_payments'].sum().reset_index()
-st.header("Costs by Condition and Hospital - Average Total Payments")
-st.dataframe(costs_condition_hospital)
-
-
-
+st.subheader('Pie Chart of Hospital Type')
+fig = px.pie(bar1, values='hospital_type', names='index')
+st.plotly_chart(fig)
 
 
 
