@@ -49,7 +49,6 @@ def load_outpatient():
     df_outpatient_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_outpatient_2.csv')
     return df_outpatient_2
 
-st.title('Medicare — Expenses - NY / NY State')
 
     
 # FAKE LOADER BAR TO STIMULATE LOADING    
@@ -59,7 +58,31 @@ st.title('Medicare — Expenses - NY / NY State')
 #     my_bar.progress(percent_complete + 1)
 
 
-st.title('Medicare — Expenses - NY / NY State')
+
+# Load the data:     
+hospital_info = load_hospitals()
+outpatient2015 = load_outpatient()
+inpatient2015 = load_inpatient()
+
+
+# Preview the dataframes 
+st.header('Hospital Data Preview')
+st.dataframe(hospital_info)
+
+st.header('Outpatient Data Preview')
+st.dataframe(outpatient2015)
+
+st.header('Inpatient Data Preview')
+st.dataframe(inpatient2015)
+
+# Merging Datasets 
+st.header('Hospital/Outpatient Merged Data')
+df_merge_outpt = df_outpatient.merge(df_hospital, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
+st.dataframe(df_merge_outpt)
+
+st.header('Hospital/Inpatient Merged Data')
+df_merge_inpt = df_inpatient.merge(df_hospital, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
+st.dataframe(df_merge_outpt)
 
 
 
