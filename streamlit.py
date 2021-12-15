@@ -112,12 +112,17 @@ st.markdown('1. What are the most common hospital types and where does New York 
 st.markdown('- As shown by the analysis above, the most common hospital type in NY is acute care (144 acute care hospitals).\
             In terms of ranking, most of the New York Hospitals are below national average in regards to timeliness of care')  
 
+##INPATIENT and OUTPATIENT 
+st.title('INPATIENT dataframe')
+st.markdown('The dataframe displayed below is for the Inpatient facility')
 
+st.subheader('Inpatient Facility')
+bar7 = df_inpatient_1['provider_state'].value_counts().reset_index()
+st.dataframe(bar7)
 
-
-
-
-
+st.subheader('Bar Chart of Inpatient Facilities by state')
+fig7 = px.bar(bar7, x='index', y='provider_state')
+st.plotly_chart(fig7)
 
 
 
