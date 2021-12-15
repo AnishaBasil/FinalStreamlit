@@ -166,15 +166,16 @@ st.markdown('3. What is Stony Brooks top three and bottom three inpatient DRG se
 st.markdown('- As shown by the analysis above, the top 3 are heart transplant, ecmo, and t rach\
                 while the bottom 3 are trauma related, hiv related conditions') 
 
-
+## 
+st.header('Merging of Hospital and Inpatient data sets')
 df_hospital_1['provider_id'] = df_hospital_1['provider_id'].astype(str)
 df_inpatient_1['provider_id'] = df_inpatient_1['provider_id'].astype(str)
 df_merged2 = df_inpatient_1.merge(df_hospital_1, how='left', left_on='provider_id', right_on='provider_id')
 df_merged_clean2 = df_merged2[df_merged2['hospital_name'].notna()]
-df_merged_clean_SB2 = df_merged_clean2[df_merged_clean2['provider_id'] == '330393']
+df_merged_clean_SB2 = df_merged_clean2[df_merged_clean2['provider_id'] == '330239']
 df_merged_clean_SB2
 
-st.header('Pivot table for average cost of each DRG for SBU Hospital')
+st.header('Pivot table (avg cost of each DRG for SBU Hospital')
 st.subheader('Pivot DRG for SBU Hospital')
 dataframe_pivot = df_merged_clean_SB2.pivot_table(index=['provider_name','drg_definition'],values=['average_total_payments'],aggfunc='mean')
 st.dataframe(dataframe_pivot)
