@@ -243,15 +243,24 @@ st.markdown('5. What is the difference between the total payment of Stony Brook 
 st.markdown('- As shown by the analysis, we can see Stony Brook Hospital has a significantly higher cost of average total payments with Endoscopy upper airway ranking the highest compared to St Charles hospital')
 
 
-## Inpatient discharges
-inpatient_ny = inpatientdf[inpatientdf['provider_state'] == 'NY']
-common_discharges = inpatient_ny.groupby('drg_definition')['total_discharges'].sum().reset_index()
-st.header('Inpatient Discharges for New York')
-st.dataframe(common_discharges)
 
 
 
 
+st.subheader('NY Hospitals - Mortality Rate')
+bar2 = ny_hospitals['mortality_national_comparison'].value_counts().reset_index()
+fig2 = px.bar(bar2, x='index', y='mortality_national_comparison')
+st.plotly_chart(fig2)
+st.caption('Majority of hospitals in the NY area fall below the national\
+        average as it relates to mortality national comparison')
+
+st.subheader('FL Hospitals - Mortality Rate')
+bar4 = nc_hospitals['mortality_national_comparison'].value_counts().reset_index()
+fig5 = px.bar(bar4, x='index', y='mortality_national_comparison')
+st.plotly_chart(fig5)
+st.caption('Based on the bar chart above, we can see the the timeliness\
+           of care data for the majority of hospitals in the North Carolina area \
+               is the same as the national average and a little bit below the national average')
 
 
 
