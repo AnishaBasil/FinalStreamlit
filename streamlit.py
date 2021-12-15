@@ -206,20 +206,36 @@ st.markdown('The most expensive average total cost for APC in the outpatient and
 
 ## ok
 
-st.subheader('Stonybrook inpatient Mortality National Comparison Pivot Table')
+st.header('Merging datasets for SBU and St. Charles Hospital')
+st.markdown('Merging of Datasets to show SBU Hospital values')
+df_hospital_1['provider_id'] = df_hospital_1['provider_id'].astype(str)
+df_outpatient_1['provider_id'] = df_outpatient_1['provider_id'].astype(str)
+df_merged = df_outpatient_1.merge(df_hospital_1, how='left', left_on='provider_id', right_on='provider_id')
 
-df_merge_outpt = inpatientdf.merge(hospitaldf, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
-st.dataframe(df_merge_outpt)
+st.dataframe(df_merged)
+st.markdown('Cleaning of df_merge')
+df_merged_clean = df_merged[df_merged['hospital_name'].notna()]
+st.dataframe(df_merged_clean)
 
-sb_merge_output = df_merge_outpt[df_merge_outpt['provider_id'] == '330239']
-st.dataframe(sb_merge_output)
+st.header('Stony Brook University Hospital dataset')
+df_merged_clean_SB = df_merged_clean[df_merged_clean['hospital_name'] == 'SUNY/STONY BROOK UNIVERSITY HOSPITAL']
+df_merged_clean_SB
 
-st.subheader('Non-StonyBrook Inpatient DRGs Pivot Table')
+st.header('St Charles')
+df_merged_clean_CEMC = df_merged_clean[df_merged_clean['hospital_name'] == 'CAROLINA EAST MEDICAL CENTER']
+df_merged_clean_CEMC
 
+st.header('Comparison of St Charles and SBU Hospitals')
+final_df_comparison = pd.concat([df_merged_clean_CEMC, df_merged_clean_SB])
+st.dataframe(final_df_comparison)
 
-SB_Outpatient_pivot = sb_merge_output.pivot_table(index=['provider_id','mortality_national_comparison'],values=['outpatient_services'])
-st.dataframe(SB_Outpatient_pivot)
-df_SB_Outpatient_ = sb_merge_output['mortality_national_comparison','outpatient_services'].value_counts().reset_index()
-st.bar_chart(SB_Outpatient_pivot)
+st.subheader('Final Comparison Pivot Table')
+dataframe_pivot = final_df_comparison.pivot_table(index=['hospital_name','apc'],values=['average_total_payments'],aggfunc='mean')
+st.dataframe(dataframe_pivot)
 
+bar2 = final_df_comparison['hospital_name'].value_counts().reset_index()
+st.subheader('Bar chart displaying SBU and St Charles differences between average total payments')
+fig3 = px.bar(bar2, x='index', y='hospital_name')
+st.plotly_chart(fig3)
+st.dataframe(bar2)
 
