@@ -14,6 +14,8 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
+import plotly
+
 
 hospitaldf = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_DataSci_507/main/Deployment_Streamlit/hospital_info.csv')
 
@@ -21,3 +23,12 @@ outpatientdf = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_
 
 inpatientdf = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_DataSci_507/main/Deployment_Streamlit/inpatient_2015.csv')
 
+print ('hospital_info:' , len(hospitaldf))
+
+
+print ('outpatient_info:' , len(outpatientdf))
+
+
+print ('inpatient_info:' , len(inpatientdf))
+
+st.title('AHI STREAMLIT APP DEPLOYMENT')
