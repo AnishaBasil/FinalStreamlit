@@ -207,27 +207,6 @@ st.markdown('The most expensive average total cost for APC in the outpatient and
 #Costs 
 
 
-costs = df_inpatient_1.groupby('provider_name')['avsterage_total_payments'].sum().reset_index()
-costs['average_total_payments'] = costs['average_total_payments'].astype('int64')
-
-
-costs_medicare = df_inpatient_1.groupby('provider_name')['average_medicare_payments'].sum().reset_index()
-costs_medicare['average_medicare_payments'] = costs_medicare['average_medicare_payments'].astype('int64')
-
-
-costs_sum = costs.merge(costs_medicare, how='left', left_on='provider_name', right_on='provider_name')
-costs_sum['delta'] = costs_sum['average_total_payments'] - costs_sum['average_medicare_payments']
-
-
-bar3 = px.bar(costs_sum, x='provider_name', y='average_total_payments')
-st.plotly_chart(bar3)
-st.header("Hospital - ")
-st.dataframe(costs_sum)
-
-inpatient_ny = df_inpatient_1[df_inpatient_1['provider_state'] == 'NY']
-total_inpatient_count = sum(inpatient_ny['total_discharges'])
-
-
 costs_condition_hospital = inpatient_ny.groupby(['provider_name', 'drg_definition'])['average_total_payments'].sum().reset_index()
 st.header("Costs by Condition and Hospital - Average Total Payments")
 st.dataframe(costs_condition_hospital)
