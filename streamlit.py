@@ -34,11 +34,61 @@ print ('inpatient_info:' , len(inpatientdf))
 st.title('STREAMLIT APP DEPLOYMENT')
 st.write('Welcome, *Everyone!* :sunglasses:')
 
-#LOADER BAR TO STIMULATE LOADING    
-my_bar = st.progress(0)
-for percent_complete in range(100):
-     time.sleep(0.1)
-     my_bar.progress(percent_complete + 1)
+@st.cache
+def load_hospitals():
+    df_hospital_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_hospital_2.csv')
+    return df_hospital_2
 
-color = st.color_picker('Pick A Color', '#00f900')
-st.write('The current color is', color)
+@st.cache
+def load_inatpatient():
+    df_inpatient_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_inpatient_2.csv')
+    return df_inpatient_2
+
+@st.cache
+def load_outpatient():
+    df_outpatient_2 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_outpatient_2.csv')
+    return df_outpatient_2
+
+st.title('Medicare — Expenses - NY / NY State')
+
+    
+# FAKE LOADER BAR TO STIMULATE LOADING    
+# my_bar = st.progress(0)
+# for percent_complete in range(100):
+#     time.sleep(0.1)
+#     my_bar.progress(percent_complete + 1)
+
+
+st.title('Medicare — Expenses - NY / NY State')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
