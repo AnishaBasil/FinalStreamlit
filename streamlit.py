@@ -98,12 +98,13 @@ st.plotly_chart(fig2)
 st.caption('Majority of hospitals in the NY area fall below the national\
         average as it relates to timeliness of care')
 
-st.subheader('TX Hospitals - Timeliness of Care')
+st.subheader('NC Hospitals - Timeliness of Care')
 bar4 = nc_hospitals['timeliness_of_care_national_comparison'].value_counts().reset_index()
 fig5 = px.bar(bar4, x='index', y='timeliness_of_care_national_comparison')
 st.plotly_chart(fig5)
 st.caption('Based on the bar chart above, we can see the the timeliness\
-           of care data for the majority of hospitals in the North Carolina area is not available and for 127 hospitals is the same as the national average')
+           of care data for the majority of hospitals in the North Carolina area \
+               is the same as the national average and a little bit below the national average')
 
 
 
