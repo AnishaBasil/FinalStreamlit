@@ -34,20 +34,19 @@ print ('inpatient_info:' , len(inpatientdf))
 st.title('STREAMLIT APP DEPLOYMENT')
 st.write('Welcome, *Everyone!* :sunglasses:')
 
-@st.cache
-def load_hospitals():
-    hospital_info = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_hospital_2.csv')
-    return hospital_info
+def load_hospitals(allow_input_mutation=True):
+    df_hospital_1 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_hospital_2.csv')
+    return df_hospital_1
 
-@st.cache
-def load_outpatient():
-    outpatient2015 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_outpatient_2.csv')
-    return outpatient2015
 
-@st.cache
-def load_inpatient():
-    inpatient2015 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_inpatient_2.csv')
-    return inpatient2015
+def load_inatpatient(allow_input_mutation=True):
+    df_inpatient_1 = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_inpatient_2.csv')
+    return df_inpatient_1
+
+
+def load_outpatient(allow_input_mutation=True):
+    df_outpatient_1= pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_STATS_507/main/Week13_Summary/output/df_outpatient_2.csv')
+    return df_outpatient_1
 
 
     
@@ -60,25 +59,24 @@ def load_inpatient():
 
 
 # Load the data:     
-hospital_info = load_hospitals()
-outpatient2015 = load_outpatient()
-inpatient2015 = load_inpatient()
-
+df_hospital_1 = load_hospitals()
+df_inpatient_1 = load_inatpatient()
+df_outpatient_1 = load_outpatient()
 
 # Preview the dataframes 
 st.header('Hospital Data Preview')
-st.dataframe(hospital_info)
+st.dataframe(df_hospital_1)
 
 st.header('Outpatient Data Preview')
-st.dataframe(outpatient2015)
+st.dataframe(df_outpatient_1)
 
 st.header('Inpatient Data Preview')
-st.dataframe(inpatient2015)
+st.dataframe(df_inpatient_1)
 
 
 #Bar Chart
 st.subheader('Hospital Type in New York')
-bar1 = hospitals_ny['hospital_type'].value_counts().reset_index()
+bar1 = hospitals_info['hospital_type'].value_counts().reset_index()
 st.dataframe(bar1)
 
 st.caption('Most of the hospitals in the New York area are acute care, followed by psychiatric')
