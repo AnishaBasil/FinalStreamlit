@@ -243,7 +243,11 @@ st.markdown('5. What is the difference between the total payment of Stony Brook 
 st.markdown('- As shown by the analysis, we can see Stony Brook Hospital has a significantly higher cost of average total payments with Endoscopy upper airway ranking the highest compared to St Charles hospital')
 
 
-
+## Inpatient discharges
+inpatient_ny = inpatientdf[inpatientdf['provider_state'] == 'NY']
+common_discharges = inpatient_ny.groupby('drg_definition')['total_discharges'].sum().reset_index()
+st.header('Inpatient Discharges for New York')
+st.dataframe(common_discharges)
 
 
 
