@@ -266,4 +266,3 @@ st.markdown('- Based on the bar charts above, we can see the mortality rate is 6
 
 
 
-
